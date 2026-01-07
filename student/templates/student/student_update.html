@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% form.as_p %}
+            <button type ="submit">update</button>
+        </form>
+        <br>
+        <hr>
+        <a href ="{% url 'student' %}">back to studnt list </a>
+    </body>
+    </html>
+    

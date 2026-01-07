@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>student list</title>
+    </head>
+    <body>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type ="submit">svae</button>
+        </form>
+        <hr>
+        <hr>
+        <table boder="1">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>age</th>
+                <th>image</th>
+            </tr>
+  {% for s in students %}
+<tr>
+    <td>{{ s.id }}</td>
+    <td>{{ s.name }}</td>
+    <td>{{ s.email }}</td>
+    <td>{{ s.age }}</td>
+    <td>
+        {% if s.image %}
+            <img src="{{ s.image.url }}" width="50">
+        {% endif %}
+    </td>
+    <td>
+        <a href="{% url 'update' s.id %}">Update</a>
+        |
+        <a href="{% url 'delete' s.id %}"
+   onclick="return confirm('Are you sure?')">
+   Delete
+</a></td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="5">No student</td>
+</tr>
+{% endfor %}
+
+        </table>
+    </body>
+    </html>
+
+
