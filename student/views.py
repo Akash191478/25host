@@ -10,7 +10,7 @@ class StudentListCreateView( LoginRequiredMixin,ListView):
     template_name = 'student/student.html'
     context_object_name = 'students'
     success_url = reverse_lazy('student')
-    login_url = 'login'
+    login_url = 'accounts/login'
     def get_queryset(self):
         return Student.objects.all() 
     def get_context_data(self, **kwargs):
